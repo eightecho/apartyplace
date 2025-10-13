@@ -27,6 +27,8 @@
             color: var(--charcoal);
             line-height: 1.7;
             overflow-x: hidden;
+            font-size: 17px;
+            letter-spacing: 0.01em;
         }
 
         .nav {
@@ -37,9 +39,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: transparent;
+            background-color: rgba(253,252,250,0.98);
             z-index: 1000;
             transition: all 0.4s ease;
+            backdrop-filter: blur(12px);
         }
 
         .nav.scrolled {
@@ -110,7 +113,7 @@
             font-size: 0.75rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--accent-gold);
+            color: #8B7355;
             font-weight: 400;
             margin-bottom: 2rem;
             display: inline-block;
@@ -127,12 +130,13 @@
 
         .hero-description {
             font-family: 'Helvetica Neue', sans-serif;
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             color: var(--charcoal);
             font-weight: 300;
             line-height: 1.9;
             margin-bottom: 3.5rem;
             max-width: 500px;
+            letter-spacing: 0.02em;
         }
 
         .hero-cta {
@@ -284,7 +288,7 @@
             font-size: 0.75rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--sage);
+            color: #7A9484;
             font-weight: 400;
             margin-bottom: 1.5rem;
         }
@@ -299,11 +303,12 @@
 
         .split-content p {
             font-family: 'Helvetica Neue', sans-serif;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             color: var(--charcoal);
             line-height: 1.9;
             font-weight: 300;
             margin-bottom: 1.5rem;
+            letter-spacing: 0.02em;
         }
 
         .split-list {
@@ -350,10 +355,11 @@
 
         .collection-header p {
             font-family: 'Helvetica Neue', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--charcoal);
             font-weight: 300;
             line-height: 1.8;
+            letter-spacing: 0.02em;
         }
 
         .collection-grid {
@@ -419,10 +425,11 @@
 
         .collection-info p {
             font-family: 'Helvetica Neue', sans-serif;
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--charcoal);
             font-weight: 300;
             line-height: 1.7;
+            letter-spacing: 0.01em;
         }
 
         .testimonial-section {
@@ -476,11 +483,12 @@
 
         .cta-content p {
             font-family: 'Helvetica Neue', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: rgba(255,255,255,0.8);
             font-weight: 300;
             line-height: 1.8;
             margin-bottom: 3rem;
+            letter-spacing: 0.02em;
         }
 
         .cta-buttons {
@@ -554,6 +562,11 @@
             justify-content: center;
             color: var(--sage);
             font-size: 1.2rem;
+        }
+
+        .contact-icon::before {
+            content: '◆';
+            font-size: 0.9rem;
         }
 
         .contact-text h4 {
@@ -766,7 +779,7 @@
             </div>
             <div class="collection-card">
                 <div class="collection-image">
-                    <img src="https://images.unsplash.com/photo-1578898886003-f7a47614b98f?w=800&q=80" alt="Fine china and glassware">
+                    <img src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?w=800&q=80" alt="Fine china and glassware">
                 </div>
                 <div class="collection-info">
                     <h3>Tableware</h3>
@@ -825,21 +838,21 @@
 
     <section class="contact-bar">
         <div class="contact-item-inline">
-            <div class="contact-icon">📍</div>
+            <div class="contact-icon"></div>
             <div class="contact-text">
                 <h4>Location</h4>
                 <p>1077 Dell Ave, Suite B<br>Campbell, CA 95008</p>
             </div>
         </div>
         <div class="contact-item-inline">
-            <div class="contact-icon">📞</div>
+            <div class="contact-icon"></div>
             <div class="contact-text">
                 <h4>Phone</h4>
                 <p><a href="tel:4088710752">(408) 871-0752</a></p>
             </div>
         </div>
         <div class="contact-item-inline">
-            <div class="contact-icon">🕐</div>
+            <div class="contact-icon"></div>
             <div class="contact-text">
                 <h4>Hours</h4>
                 <p>Mon–Fri: 9:00 AM – 4:00 PM</p>

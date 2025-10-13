@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Party Place — Fine Linen & Event Rentals • Campbell, CA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Deep Emerald Palette */
+            --pearl: #F8F7F4;
+            --whisper: #EAE8E3;
+            --stone: #CFCBC4;
+            --slate: #52524E;
+            --midnight: #1C1C1A;
+            --emerald: #2A5F4F;
+            --emerald-light: #3D7A66;
+            --emerald-dark: #1E4639;
+        }
+
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--pearl);
+            color: var(--slate);
+            line-height: 1.7;
+            overflow-x: hidden;
+            font-size: 17px;
+            letter-spacing: 0.01em;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(248,247,244,0.98);
+            z-index: 1000;
+            transition: all 0.4s ease;
+            border-bottom: 1px solid var(--whisper);
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.08em;
+            font-weight: 500;
+            color: var(--midnight);
+        }
+
+        .logo-accent {
+            color: var(--emerald);
+            font-style: italic;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            color: var(--slate);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--emerald);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--emerald);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background-color: var(--pearl);
+        }
+
+        .hero-left {
+            padding: 10rem 8% 8rem 8%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--pearl) 0%, var(--whisper) 100%);
+            position: relative;
+        }
+
+        .hero-left::before {
+            content: '';
+            position: absolute;
+            top: 15%;
+            left: -10%;
+            width: 250px;
+            height: 250px;
+            background-color: var(--emerald);
+            opacity: 0.06;
+            border-radius: 50%;
+            filter: blur(70px);
+        }
+
+        .hero-badge {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #1E4639;
+            font-weight: 600;
+            margin-bottom: 2.5rem;
+            display: inline-block;
+        }
+
+        .hero h1 {
+            font-size: 6rem;
+            font-weight: 400;
+            letter-spacing: -0.015em;
+            margin-bottom: 2rem;
+            color: var(--midnight);
+            line-height: 1;
+        }
+
+        .hero h1 .highlight {
+            color: var(--emerald);
+            font-style: italic;
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--slate);
+            font-weight: 300;
+            line-height: 1.9;
+            margin-bottom: 3.5rem;
+            max-width: 520px;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem 3.5rem;
+            background-color: var(--emerald);
+            color: white;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            font-weight: 500;
+            width: fit-content;
+            border: 2px solid var(--emerald);
+        }
+
+        .hero-cta:hover {
+            background-color: var(--emerald-dark);
+            border-color: var(--emerald-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(42, 95, 79, 0.35);
+        }
+
+        .hero-right {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-right::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(42, 95, 79, 0.7) 0%, rgba(30, 70, 57, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .hero-right::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 30% 70%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(0,0,0,0.15) 0%, transparent 50%);
+            z-index: 2;
+        }
+
+        .floating-info {
+            position: absolute;
+            bottom: 10%;
+            right: 8%;
+            background-color: rgba(248,247,244,0.98);
+            padding: 3rem;
+            max-width: 340px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 12px 50px rgba(0,0,0,0.2);
+            border-left: 5px solid var(--emerald-light);
+            z-index: 3;
+        }
+
+        .floating-info h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--midnight);
+            letter-spacing: 0.02em;
+        }
+
+        .floating-info p {
+            font-size: 0.95rem;
+            color: var(--slate);
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .stats-section {
+            padding: 7rem 8%;
+            background-color: var(--midnight);
+            color: var(--pearl);
+            position: relative;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--emerald-dark) 0%, var(--emerald) 50%, var(--emerald-light) 100%);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            font-weight: 300;
+            color: var(--emerald-light);
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.7);
+            font-weight: 400;
+        }
+
+        .split-section {
+            display: grid;
+            grid-template-columns: 45% 55%;
+            min-height: 600px;
+        }
+
+        .split-section.reverse {
+            grid-template-columns: 55% 45%;
+        }
+
+        .split-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .split-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .split-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 30%, rgba(42, 95, 79, 0.08) 100%);
+        }
+
+        .split-content {
+            padding: 8rem 8%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: var(--pearl);
+        }
+
+        .split-section.reverse .split-content {
+            background-color: var(--whisper);
+        }
+
+        .eyebrow {
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: #1E4639;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .split-content h2 {
+            font-size: 3.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: var(--midnight);
+            line-height: 1.15;
+            letter-spacing: 0.01em;
+        }
+
+        .split-content p {
+            font-size: 1.1rem;
+            color: var(--slate);
+            line-height: 1.9;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.02em;
+        }
+
+        .split-list {
+            list-style: none;
+            margin: 2.5rem 0;
+        }
+
+        .split-list li {
+            font-size: 1rem;
+            color: var(--slate);
+            padding: 1.3rem 0;
+            border-bottom: 1px solid var(--stone);
+            font-weight: 300;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .split-list li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background-color: var(--emerald);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .collection-section {
+            padding: 10rem 8%;
+            background: var(--pearl);
+            text-align: center;
+            position: relative;
+        }
+
+        .collection-section::before {
+            content: '';
+            position: absolute;
+            top: 8%;
+            left: 5%;
+            width: 350px;
+            height: 350px;
+            background-color: var(--emerald);
+            opacity: 0.03;
+            border-radius: 50%;
+            filter: blur(90px);
+        }
+
+        .collection-header {
+            max-width: 750px;
+            margin: 0 auto 7rem;
+        }
+
+        .collection-header h2 {
+            font-size: 4.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: var(--midnight);
+            line-height: 1.1;
+            letter-spacing: 0.01em;
+        }
+
+        .collection-header h2 .accent {
+            color: var(--emerald);
+            font-style: italic;
+        }
+
+        .collection-header p {
+            font-size: 1.15rem;
+            color: var(--slate);
+            font-weight: 300;
+            line-height: 1.9;
+            letter-spacing: 0.02em;
+        }
+
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .collection-card {
+            background-color: white;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid var(--whisper);
+        }
+
+        .collection-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+            border-color: var(--emerald);
+        }
+
+        .collection-image {
+            aspect-ratio: 4/5;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .collection-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .collection-card:hover .collection-image img {
+            transform: scale(1.05);
+        }
+
+        .collection-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(42, 95, 79, 0.6), rgba(30, 70, 57, 0.4));
+            opacity: 0.3;
+        }
+
+        .collection-image::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background-color: var(--emerald);
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.5s ease;
+            z-index: 1;
+        }
+
+        .collection-card:hover .collection-image::before {
+            opacity: 0.25;
+            width: 250px;
+            height: 250px;
+        }
+
+        .collection-info {
+            padding: 2.5rem;
+            text-align: left;
+        }
+
+        .collection-info h3 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--midnight);
+            letter-spacing: 0.01em;
+        }
+
+        .collection-info p {
+            font-size: 1rem;
+            color: var(--slate);
+            font-weight: 300;
+            line-height: 1.8;
+            letter-spacing: 0.01em;
+        }
+
+        .testimonial-section {
+            padding: 12rem 8%;
+            background: linear-gradient(135deg, var(--whisper) 0%, var(--pearl) 100%);
+        }
+
+        .testimonial-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .testimonial-container::before {
+            content: '"';
+            position: absolute;
+            top: -4rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14rem;
+            color: var(--emerald);
+            opacity: 0.1;
+            line-height: 1;
+        }
+
+        .testimonial-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-style: italic;
+            font-weight: 300;
+            line-height: 1.5;
+            color: var(--midnight);
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--emerald);
+            font-weight: 600;
+        }
+
+        .cta-section {
+            background-color: var(--emerald);
+            padding: 12rem 8%;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            left: -15%;
+            width: 700px;
+            height: 700px;
+            background-color: var(--emerald-dark);
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background-color: var(--emerald-light);
+            border-radius: 50%;
+            opacity: 0.2;
+        }
+
+        .cta-content {
+            max-width: 850px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-content h2 {
+            font-size: 4.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: white;
+            line-height: 1.15;
+            letter-spacing: 0.01em;
+        }
+
+        .cta-content p {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.95);
+            font-weight: 300;
+            line-height: 1.9;
+            margin-bottom: 3.5rem;
+            letter-spacing: 0.02em;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 1.5rem 3.8rem;
+            background-color: white;
+            color: var(--emerald);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            font-weight: 600;
+            border: 2px solid white;
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            padding: 1.5rem 3.8rem;
+            background-color: transparent;
+            color: white;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+
+        .btn-secondary:hover {
+            border-color: white;
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .contact-bar {
+            padding: 4rem 8%;
+            background-color: var(--whisper);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+        }
+
+        .contact-item-inline {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--emerald);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.4rem;
+        }
+
+        .contact-icon::before {
+            content: '◆';
+            font-size: 1.2rem;
+        }
+
+        .contact-text h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--emerald);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-text p {
+            font-size: 1.05rem;
+            color: var(--midnight);
+            font-weight: 400;
+        }
+
+        .contact-text a {
+            color: var(--midnight);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-text a:hover {
+            color: var(--emerald);
+        }
+
+        .footer {
+            padding: 3.5rem 8%;
+            text-align: center;
+            background-color: var(--midnight);
+        }
+
+        .footer p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 0.12em;
+            font-weight: 300;
+        }
+
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-right {
+                min-height: 400px;
+            }
+
+            .split-section,
+            .split-section.reverse {
+                grid-template-columns: 1fr;
+            }
+
+            .collection-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 3rem;
+            }
+
+            .stat-item {
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                padding-bottom: 2rem;
+            }
+
+            .stat-item:last-child {
+                border-bottom: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .split-content h2,
+            .collection-header h2,
+            .cta-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .contact-bar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-quote {
+                font-size: 1.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav" id="navbar">
+        <div class="logo">A <span class="logo-accent">Party</span> Place</div>
+        <ul class="nav-links">
+            <li><a href="#collections">Collections</a></li>
+            <li><a href="#showroom">Showroom</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-left">
+            <span class="hero-badge">Est. 1984 • Campbell, California</span>
+            <h1>Celebrations <span class="highlight">Elevated</span></h1>
+            <p class="hero-description">
+                Four decades of transforming gatherings into extraordinary moments. Through exceptional rentals and personalized care, we bring your vision to life with elegance and expertise.
+            </p>
+            <a href="#contact" class="hero-cta">
+                Start Planning
+            </a>
+        </div>
+        <div class="hero-right">
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200&q=80" alt="Elegant event tablescape">
+            <div class="floating-info">
+                <h3>Visit Our Showroom</h3>
+                <p>Experience our 800 square foot collection featuring complete table settings, premium linens, and curated rental options.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">40+</div>
+                <div class="stat-label">Years of Excellence</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">800</div>
+                <div class="stat-label">Sq Ft Showroom</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Events Annually</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Full Service Included</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="split-section" id="about">
+        <div class="split-image">
+            <img src="https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=1200&q=80" alt="Fine table linens">
+        </div>
+        <div class="split-content">
+            <span class="eyebrow">Our Heritage</span>
+            <h2>Four Decades of Exceptional Service</h2>
+            <p>Since 1984, A Party Place has been the Bay Area's trusted partner for life's most important celebrations. Our experienced team brings unmatched expertise to every event.</p>
+            <p>From intimate family gatherings to grand corporate affairs, we provide the same meticulous attention to detail that has made us a cornerstone of the Campbell community.</p>
+        </div>
+    </section>
+
+    <section class="split-section reverse" id="showroom">
+        <div class="split-content">
+            <span class="eyebrow">Experience & Expertise</span>
+            <h2>Personalized Consultation</h2>
+            <p>Our showroom is designed to inspire. Walk through complete table settings, feel the quality of our linens, and envision your perfect event with guidance from our knowledgeable staff.</p>
+            <ul class="split-list">
+                <li>Complete table setting displays</li>
+                <li>Extensive linen and color samples</li>
+                <li>Expert design assistance</li>
+                <li>Flexible rental options</li>
+                <li>Professional delivery and setup</li>
+            </ul>
+        </div>
+        <div class="split-image">
+            <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1200&q=80" alt="Showroom display">
+        </div>
+    </section>
+
+    <section class="collection-section" id="collections">
+        <div class="collection-header">
+            <h2>Our <span class="accent">Collections</span></h2>
+            <p>Carefully curated rental options for weddings, corporate events, and private celebrations. Quality equipment with seamless service.</p>
+        </div>
+        <div class="collection-grid">
+            <div class="collection-card">
+                <div class="collection-image">
+                    <img src="https://images.unsplash.com/photo-1530103043960-ef38714abb15?w=800&q=80" alt="Outdoor tents">
+                </div>
+                <div class="collection-info">
+                    <h3>Tents & Canopies</h3>
+                    <p>Professional tent solutions for outdoor events. Comfortable, elegant coverage for gatherings of any size.</p>
+                </div>
+            </div>
+            <div class="collection-card">
+                <div class="collection-image">
+                    <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&q=80" alt="Event lighting">
+                </div>
+                <div class="collection-info">
+                    <h3>Lighting & Décor</h3>
+                    <p>Ambient lighting and decorative elements. Thoughtful touches that transform your space and create atmosphere.</p>
+                </div>
+            </div>
+            <div class="collection-card">
+                <div class="collection-image">
+                    <img src="https://images.unsplash.com/photo-1464093515883-ec948246accb?w=800&q=80" alt="Complete service">
+                </div>
+                <div class="collection-info">
+                    <h3>Complete Service</h3>
+                    <p>Professional delivery, setup, and pickup included. Our experienced team ensures flawless execution.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonial-section">
+        <div class="testimonial-container">
+            <blockquote class="testimonial-quote">
+                The attention to detail and quality of service exceeded our expectations. A Party Place made our wedding day absolutely perfect.
+            </blockquote>
+            <p class="testimonial-author">— Bay Area Couple, 2024</p>
+        </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+        <div class="cta-content">
+            <h2>Ready to Begin?</h2>
+            <p>Let's create something beautiful together. Schedule a showroom visit or reach out to discuss your event vision with our experienced team.</p>
+            <div class="cta-buttons">
+                <a href="tel:4088710752" class="btn-primary">Call (408) 871-0752</a>
+                <a href="#showroom" class="btn-secondary">Visit Showroom</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-bar">
+        <div class="contact-item-inline">
+            <div class="contact-icon"></div>
+            <div class="contact-text">
+                <h4>Location</h4>
+                <p>1077 Dell Ave, Suite B<br>Campbell, CA 95008</p>
+            </div>
+        </div>
+        <div class="contact-item-inline">
+            <div class="contact-icon"></div>
+            <div class="contact-text">
+                <h4>Phone</h4>
+                <p><a href="tel:4088710752">(408) 871-0752</a></p>
+            </div>
+        </div>
+        <div class="contact-item-inline">
+            <div class="contact-icon"></div>
+            <div class="contact-text">
+                <h4>Hours</h4>
+                <p>Mon–Fri: 9:00 AM – 4:00 PM</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2025 A Party Place • Fine Linen & Event Rentals • Serving the Bay Area Since 1984</p>
+    </footer>
+</body>
+</html>images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&q=80" alt="Fine linens">
+                </div>
+                <div class="collection-info">
+                    <h3>Fine Linens</h3>
+                    <p>Premium table linens in classic and contemporary styles. Refined textures and timeless colors that elevate any tablescape.</p>
+                </div>
+            </div>
+            <div class="collection-card">
+                <div class="collection-image">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80" alt="Tables and chairs">
+                </div>
+                <div class="collection-info">
+                    <h3>Tables & Chairs</h3>
+                    <p>From elegant chiavari chairs to rustic farm tables. Versatile seating and table options for every aesthetic and occasion.</p>
+                </div>
+            </div>
+            <div class="collection-card">
+                <div class="collection-image">
+                    <img src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?w=800&q=80" alt="Fine tableware">
+                </div>
+                <div class="collection-info">
+                    <h3>Tableware</h3>
+                    <p>Curated china, glassware, and flatware collections. Classic designs that bring sophistication to your celebration.</p>
+                </div>
+            </div>
+            <div class="collection-card">
+                <div class="collection-image">
+                    <img src="https://

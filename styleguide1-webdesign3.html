@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Party Place | Since 1984</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #9b8579;
+            --light-color: #f8f5f2;
+            --accent-color: #d4c8be;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+        }
+        
+        /* Image overlay for service items */
+        .img-overlay {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .img-overlay img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .img-overlay:hover img {
+            transform: scale(1.05);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--primary-color);
+            background-color: var(--light-color);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+            position: relative;
+        }
+        
+        h2:after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 1px;
+            background-color: var(--secondary-color);
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        p {
+            margin-bottom: var(--spacing-md);
+            max-width: 650px;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-md) 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            margin-top: var(--spacing-sm);
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+        }
+        
+        /* Header */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(248, 245, 242, 0.8), rgba(248, 245, 242, 0.8)), url('https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+            padding: 0 var(--spacing-md);
+        }
+        
+        .since {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 0.8rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .tagline {
+            max-width: 600px;
+            margin: var(--spacing-md) auto;
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+        
+        /* About Section */
+        .about {
+            padding: var(--spacing-xl) 0;
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            height: 500px;
+            background: url('https://images.unsplash.com/photo-1530023367847-a683933f4172?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2274&q=80') center/cover no-repeat;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--light-color);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+        
+        .service-item {
+            padding: var(--spacing-md);
+            background-color: white;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .service-description {
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        
+        /* Testimonial Section */
+        .testimonial {
+            padding: var(--spacing-xl) 0;
+            background-color: white;
+            text-align: center;
+        }
+        
+        .quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-md);
+            line-height: 1.4;
+        }
+        
+        /* Visit Section */
+        .visit {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--light-color);
+        }
+        
+        .visit-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: var(--spacing-lg);
+        }
+        
+        .visit-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .info-item {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .info-title {
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .info-content {
+            font-size: 1rem;
+        }
+        
+        .visit-image {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background: url('https://images.unsplash.com/photo-1543353071-10c8ba85a904?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+        }
+        
+        /* Events Section */
+        .events {
+            padding: var(--spacing-xl) 0;
+            background-color: white;
+        }
+        
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+        
+        .event-item {
+            padding: var(--spacing-md);
+            border: 1px solid var(--accent-color);
+            transition: all 0.3s ease;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            color: white;
+        }
+        
+        .event-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2));
+            z-index: 1;
+        }
+        
+        .event-item:hover::before {
+            background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.3));
+        }
+        
+        .event-item .event-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .event-title {
+            font-size: 1.3rem;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .event-description {
+            font-size: 0.9rem;
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            padding: var(--spacing-xl) 0;
+            background-color: white;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-lg);
+        }
+        
+        .gallery-item {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .contact {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--light-color);
+            text-align: center;
+        }
+        
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+        
+        /* Footer */
+        footer {
+            padding: var(--spacing-md) 0;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .footer-info {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .about-content, .visit-content {
+                flex-direction: column;
+            }
+            
+            .about-image, .visit-image {
+                height: 300px;
+                margin-top: var(--spacing-md);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="since">Since 1984</div>
+        <h1>Elegance in Every Detail</h1>
+        <p class="tagline">Four decades of transforming celebrations into lasting memories through exceptional event rentals and personalized service in the heart of California's Bay Area.</p>
+        <a href="#contact" class="btn">Explore Our Collections</a>
+    </header>
+    
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Where Excellence Meets Experience</h2>
+                    <p>A Party Place has been Campbell's premier event rental destination since 1984. Our 800 square foot showroom displays complete table settings, allowing you to experience the quality and craftsmanship of our collections firsthand.</p>
+                    <p>From fine linens and elegant dinnerware to comprehensive tent solutions, we provide everything needed to create extraordinary celebrations—weddings, corporate gatherings, milestone birthdays, and intimate family affairs.</p>
+                    <p class="quote">"Every detail curated, every moment elevated"</p>
+                </div>
+                <div class="about-image"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2>Our Signature Collections</h2>
+            <p>Thoughtfully curated rentals designed to elevate every aspect of your celebration</p>
+            
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="img-overlay">
+                        <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Fine Linens">
+                    </div>
+                    <h3 class="service-title">Fine Linens</h3>
+                    <p class="service-description">Premium table linens in refined textures and timeless colorways that serve as the foundation of elegant tablescapes.</p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="img-overlay">
+                        <img src="https://images.unsplash.com/photo-1571624436279-b272aff752b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Tables & Chairs">
+                    </div>
+                    <h3 class="service-title">Tables & Chairs</h3>
+                    <p class="service-description">From elegant chiavari chairs to rustic farm tables. Versatile seating and table options for every aesthetic and occasion.</p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="img-overlay">
+                        <img src="https://images.unsplash.com/photo-1617791160505-6f00504e3519?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1856&q=80" alt="China & Crystal">
+                    </div>
+                    <h3 class="service-title">China & Crystal</h3>
+                    <p class="service-description">Curated dinnerware and glassware collections that bring refinement to your table setting.</p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="img-overlay">
+                        <img src="https://images.unsplash.com/photo-1505944357642-27a42c5f7c9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Tent Solutions">
+                    </div>
+                    <h3 class="service-title">Tent Solutions</h3>
+                    <p class="service-description">Professional tent solutions for outdoor events. Comfortable, elegant coverage for gatherings of any size.</p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="img-overlay">
+                        <img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ambient Lighting">
+                    </div>
+                    <h3 class="service-title">Ambient Lighting</h3>
+                    <p class="service-description">Ambient lighting and decorative elements. Thoughtful touches that transform your space and create atmosphere.</p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="img-overlay">
+                        <img src="https://images.unsplash.com/photo-1543353071-087092ec393a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Complete Service">
+                    </div>
+                    <h3 class="service-title">Complete Service</h3>
+                    <p class="service-description">Professional delivery, expert setup, and timely pickup—seamless execution from start to finish.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonial Section -->
+    <section class="testimonial">
+        <div class="container">
+            <p class="quote">"The attention to detail and quality of service exceeded our expectations. A Party Place made our wedding day absolutely perfect."</p>
+        </div>
+    </section>
+    
+    <!-- Visit Section -->
+    <section class="visit" id="visit">
+        <div class="container">
+            <div class="visit-content">
+                <div class="visit-info">
+                    <h2>Visit Our Campbell Showroom</h2>
+                    <p>Experience our extensive collection in person. Touch the quality of our linens, envision your table settings, and consult with our knowledgeable team who have been perfecting celebrations for over four decades.</p>
+                    
+                    <div class="info-item">
+                        <div class="info-title">Address</div>
+                        <div class="info-content">1077 Dell Avenue, Suite B, Campbell, CA 95008</div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-title">Hours</div>
+                        <div class="info-content">Monday through Friday, 9:00 AM – 4:00 PM</div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-title">Contact</div>
+                        <div class="info-content">(408) 871-0752</div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-title">Showroom</div>
+                        <div class="info-content">800 Square Feet of Inspiration</div>
+                    </div>
+                </div>
+                <div class="visit-image"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Events Section -->
+    <section class="events" id="events">
+        <div class="container">
+            <h2>Celebrations We Serve</h2>
+            <p>From intimate family gatherings to grand celebrations, we provide thoughtfully curated rental collections that transform your vision into an unforgettable experience.</p>
+            
+            <div class="events-grid">
+                <div class="event-item" style="background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                    <div class="event-content">
+                        <h3 class="event-title">Weddings</h3>
+                        <p class="event-description">Create your dream wedding with our elegant rental collections and expert coordination.</p>
+                    </div>
+                </div>
+                
+                <div class="event-item" style="background-image: url('https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2274&q=80')">
+                    <div class="event-content">
+                        <h3 class="event-title">Corporate Events</h3>
+                        <p class="event-description">Professional equipment and seamless service for conferences, galas, and company celebrations.</p>
+                    </div>
+                </div>
+                
+                <div class="event-item" style="background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80')">
+                    <div class="event-content">
+                        <h3 class="event-title">Social Gatherings</h3>
+                        <p class="event-description">From milestone birthdays to intimate gatherings, we help make every moment special.</p>
+                    </div>
+                </div>
+                
+                <div class="event-item" style="background-image: url('https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                    <div class="event-content">
+                        <h3 class="event-title">Graduations</h3>
+                        <p class="event-description">Celebrate achievements with quality rentals that honor this important milestone.</p>
+                    </div>
+                </div>
+                
+                <div class="event-item" style="background-image: url('https://images.unsplash.com/photo-1612831197310-ff5cf7a211b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                    <div class="event-content">
+                        <h3 class="event-title">Nonprofit Events</h3>
+                        <p class="event-description">Supporting community organizations with professional event equipment and service.</p>
+                    </div>
+                </div>
+                
+                <div class="event-item" style="background-image: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80')">
+                    <div class="event-content">
+                        <h3 class="event-title">Family Celebrations</h3>
+                        <p class="event-description">Family reunions, anniversaries, and special occasions deserve thoughtful attention to detail.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <div class="container">
+            <h2>Our Gallery</h2>
+            <p>A glimpse of our recent events and rental collections</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1546868871-0f936769675e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Elegant table setting">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1518982983800-05c4f132a12d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Wedding setup">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1564356894595-78221271c938?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Glassware collection">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2274&q=80" alt="Corporate event">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1520869578617-6b4d99df5047?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Outdoor celebration">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Table setting detail">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2>Begin Your Celebration</h2>
+                <p>Let our four decades of expertise guide your vision into reality. Visit our showroom to see our collections in person, or reach out to begin planning your event.</p>
+                
+                <div class="contact-buttons">
+                    <a href="tel:4088710752" class="btn">Call Us</a>
+                    <a href="#visit" class="btn">Visit Showroom</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">A Party Place</div>
+                <div class="footer-info">
+                    <p>1077 Dell Avenue, Suite B, Campbell, CA 95008 | (408) 871-0752</p>
+                    <p>Monday – Friday: 9:00 AM – 4:00 PM | Closed Saturday & Sunday</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Party Place | Luxury Event Rentals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #283c43;
+            --secondary: #c6a77e;
+            --light: #f8f6f3;
+            --dark: #222;
+            --text: #555;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        p {
+            margin-bottom: var(--spacing-md);
+            font-weight: 300;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--secondary);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: var(--spacing-sm);
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn.btn-light {
+            border-color: white;
+            color: white;
+        }
+
+        .btn.btn-light:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .flex {
+            display: flex;
+            align-items: center;
+        }
+
+        .space-between {
+            justify-content: space-between;
+        }
+
+        .center {
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(248, 246, 243, 0.95);
+            transition: var(--transition);
+        }
+
+        .header-top {
+            padding: var(--spacing-xs) 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-size: 0.8rem;
+        }
+
+        .header-top a {
+            margin-left: var(--spacing-md);
+        }
+
+        .logo {
+            padding: var(--spacing-sm) 0;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: var(--spacing-md);
+        }
+
+        nav ul li a {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .nav-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=2098');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            color: white;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        /* Table Designer */
+        .table-designer {
+            padding: var(--spacing-xl) 0;
+            background-color: white;
+        }
+
+        .table-designer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .table-designer img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Categories */
+        .categories {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .categories-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        .category-item {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .category-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .category-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .category-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: var(--spacing-md);
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+        }
+
+        .category-content h3 {
+            color: white;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        /* Featured Collections */
+        .featured {
+            padding: var(--spacing-xl) 0;
+            background-color: white;
+        }
+
+        .featured-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        .featured-item {
+            text-align: center;
+        }
+
+        .featured-item img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .featured-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .featured-item p {
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .testimonials h2 {
+            color: white;
+            text-align: center;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonial-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.4;
+        }
+
+        .testimonial-author {
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Instagram Feed */
+        .instagram {
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+        }
+
+        .instagram h2 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .instagram-item {
+            aspect-ratio: 1/1;
+            overflow: hidden;
+        }
+
+        .instagram-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .instagram-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Contact */
+        .contact {
+            padding: var(--spacing-xl) 0;
+            background-color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        .contact-info {
+            padding-right: var(--spacing-lg);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+            border: 1px solid #ddd;
+            background-color: var(--light);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: rgba(255,255,255,0.7);
+            padding: var(--spacing-lg) 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-logo {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-logo img {
+            height: 30px;
+            filter: brightness(0) invert(1);
+            opacity: 0.8;
+        }
+
+        .footer-heading {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-md);
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer ul li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        footer ul li a {
+            color: rgba(255,255,255,0.7);
+            transition: var(--transition);
+        }
+
+        footer ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-bottom {
+            padding-top: var(--spacing-md);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+        }
+
+        .social-icons a {
+            color: rgba(255,255,255,0.7);
+            margin-left: var(--spacing-sm);
+            font-size: 1.2rem;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .categories-grid,
+            .featured-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .instagram-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .table-designer-grid,
+            .contact-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+
+            .categories-grid,
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .instagram-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .nav-btn {
+                display: block;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container flex space-between">
+                <div>
+                    <span>Serving the San Francisco Bay Area since 1984</span>
+                </div>
+                <div>
+                    <a href="tel:4088710752">(408) 871-0752</a>
+                    <a href="mailto:info@apartyplace.com">info@apartyplace.com</a>
+                </div>
+            </div>
+        </div>
+        <div class="container flex space-between">
+            <div class="logo">
+                <a href="#"><img src="https://apartyplace.com/home/wp-content/uploads/2018/11/AppLogo.png" alt="A Party Place Logo"></a>
+            </div>
+            <nav>
+                <button class="nav-btn">☰</button>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Rentals</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Table Designer</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Create unforgettable events with our curated collection</h1>
+                <p>From intimate gatherings to grand celebrations, we provide everything you need to bring your vision to life.</p>
+                <a href="#" class="btn btn-light">Explore Rentals</a>
+                <a href="#" class="btn btn-light">Design Your Table</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table Designer Section -->
+    <section class="table-designer">
+        <div class="container">
+            <div class="table-designer-grid">
+                <div>
+                    <h2>Design Your Perfect Table</h2>
+                    <p>Our interactive table designer allows you to mix and match our extensive collection of linens, tableware, flatware, and décor to create a unique look that perfectly reflects your vision.</p>
+                    <p>Experiment with different colors, textures, and styles to see how your table will look before your event, ensuring a cohesive and beautiful presentation that will impress your guests.</p>
+                    <a href="#" class="btn">Start Designing</a>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1604686497371-11c9bd7a23a8?q=80&w=1974" alt="Table Setting">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <div class="categories-intro">
+                <h2>Explore Our Collections</h2>
+                <p>Browse our carefully curated categories of event rentals, each designed to help you create the perfect atmosphere for your special occasion.</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-item">
+                    <img src="https://images.unsplash.com/photo-1561566472-4d036555c323?q=80&w=1932" alt="Linens">
+                    <div class="category-content">
+                        <h3>Fine Linens</h3>
+                        <p>Luxurious tablecloths, napkins, runners, and overlays in a variety of colors and fabrics.</p>
+                    </div>
+                </div>
+                <div class="category-item">
+                    <img src="https://images.unsplash.com/photo-1547592180-637cabba3276?q=80&w=1974" alt="Tabletop">
+                    <div class="category-content">
+                        <h3>Tabletop & Dinnerware</h3>
+                        <p>Elegant china, chargers, flatware, and glassware to elevate your dining experience.</p>
+                    </div>
+                </div>
+                <div class="category-item">
+                    <img src="https://images.unsplash.com/photo-1575994567739-e2bfa3378685?q=80&w=1974" alt="Furniture">
+                    <div class="category-content">
+                        <h3>Furniture & Décor</h3>
+                        <p>Stylish seating, tables, lighting, and decorative elements for any event.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Collections Section -->
+    <section class="featured">
+        <div class="container">
+            <div class="featured-intro">
+                <h2>Featured Collections</h2>
+                <p>Discover our newest and most popular rental collections, carefully curated to inspire your next event.</p>
+            </div>
+            <div class="featured-grid">
+                <div class="featured-item">
+                    <img src="https://images.unsplash.com/photo-1583266999030-aedcecc8d2a3?q=80&w=1974" alt="Blush & Gold">
+                    <h4>Blush & Gold</h4>
+                    <p>Romantic and elegant with soft pink tones and gold accents.</p>
+                    <a href="#">View Collection</a>
+                </div>
+                <div class="featured-item">
+                    <img src="https://images.unsplash.com/photo-1544228865-7d73678c0f28?q=80&w=2070" alt="Modern Minimal">
+                    <h4>Modern Minimal</h4>
+                    <p>Clean lines and contemporary styling for the modern couple.</p>
+                    <a href="#">View Collection</a>
+                </div>
+                <div class="featured-item">
+                    <img src="https://images.unsplash.com/photo-1535359056830-d4badde79747?q=80&w=2069" alt="Rustic Charm">
+                    <h4>Rustic Charm</h4>
+                    <p>Warm and inviting with natural textures and earthy tones.</p>
+                    <a href="#">View Collection</a>
+                </div>
+                <div class="featured-item">
+                    <img src="https://images.unsplash.com/photo-1496318447583-f524534e9ce1?q=80&w=2134" alt="Classic Elegance">
+                    <h4>Classic Elegance</h4>
+                    <p>Timeless sophistication with crisp whites and silver accents.</p>
+                    <a href="#">View Collection</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial-quote">
+                    "A Party Place transformed our wedding vision into reality. Their attention to detail and quality of rentals exceeded our expectations. The table settings were absolutely stunning!"
+                </div>
+                <div class="testimonial-author">
+                    SARAH & MICHAEL, WEDDING CLIENTS
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed Section -->
+    <section class="instagram">
+        <div class="container">
+            <h2>Follow Our Inspiration</h2>
+            <p>@apartyplace</p>
+            <div class="instagram-grid">
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070" alt="Instagram Post">
+                </div>
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?q=80&w=2069" alt="Instagram Post">
+                </div>
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1548195667-1a6bd674c08d?q=80&w=1974" alt="Instagram Post">
+                </div>
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=2070" alt="Instagram Post">
+                </div>
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=2070" alt="Instagram Post">
+                </div>
+            </div>
+            <a href="#" class="btn">View Instagram</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Contact Us</h2>
+                    <p>Our experienced team is ready to help you plan your perfect event. Visit our showroom, call us, or send a message to start creating your vision.</p>
+                    
+                    <h3>Showroom</h3>
+                    <p>1077 Dell Ave, Ste B<br>Campbell, CA 95008</p>
+                    
+                    <h3>Hours</h3>
+                    <p>Monday - Friday: 9:00 AM - 4:00 PM<br>Saturday - Sunday: Closed</p>
+                    
+                    <h3>Contact</h3>
+                    <p>Phone: (408) 871-0752<br>Email: info@apartyplace.com</p>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Name" required>
+                        <input type="email" placeholder="Email" required>
+                        <input type="tel" placeholder="Phone">
+                        <input type="text" placeholder="Event Date">
+                        <textarea placeholder="Tell us about your event..."></textarea>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <img src="https://apartyplace.com/home/wp-content/uploads/2018/11/AppLogo.png" alt="A Party Place Logo">
+                    </div>
+                    <p>A Party Place has been serving the San Francisco Bay Area since 1984, providing exceptional event rental services for weddings, corporate events, private parties, and more.</p>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Rentals</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Table Designer</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Rental Categories</h4>
+                    <ul>
+                        <li><a href="#">Fine Linens</a></li>
+                        <li><a href="#">Tabletop & Dinnerware</a></li>
+                        <li><a href="#">Furniture & Décor</a></li>
+                        <li><a href="#">Tents & Structures</a></li>
+                        <li><a href="#">Lighting</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading">Newsletter</h4>
+                    <p>Subscribe to receive updates, inspiration, and special offers.</p>
+                    <form>
+                        <input type="email" placeholder="Your Email" style="width: 100%; padding: 8px; margin-bottom: 10px; background: rgba(255,255,255,0.1); border: none; color: white;">
+                        <button type="submit" class="btn btn-light" style="margin-top: 0; width: 100%;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>© 2025 A Party Place. All Rights Reserved.</div>
+                <div class="social-icons">
+                    <a href="#">F</a>
+                    <a href="#">I</a>
+                    <a href="#">P</a>
+                    <a href="#">Y</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for header behavior
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(248, 246, 243, 0.98)';
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                header.style.backgroundColor = 'rgba(248, 246, 243, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Mobile navigation toggle (simplified)
+        document.querySelector('.nav-btn').addEventListener('click', function() {
+            const nav = document.querySelector('nav ul');
+            if (nav.style.display === 'flex') {
+                nav.style.display = 'none';
+            } else {
+                nav.style.display = 'flex';
+                nav.style.flexDirection = 'column';
+                nav.style.position = 'absolute';
+                nav.style.top = '100%';
+                nav.style.right = '0';
+                nav.style.backgroundColor = 'var(--light)';
+                nav.style.padding = '20px';
+                nav.style.width = '200px';
+                nav.style.boxShadow = '0 5px 10px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
